@@ -1,0 +1,12 @@
+services:
+  frontend:
+    container_name: proxmox-command
+    image: fubooki/command-proxmox:frontend
+    restart: unless-stopped
+    ports:
+      - ${FRONTEND_PORT}:${FRONTEND_PORT}
+    volumes:
+      - ./frontend:/app:Z
+      - /app/node_modules
+    environment:
+      - "${FRONTEND_PORT}:FRONTEND_PORT"
